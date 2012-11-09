@@ -1,0 +1,221 @@
+/** --------------------------------------------------------- 
+* BASIC PAGE TEMPLATE
+*
+* - 960px width
+* - 100% height
+* - Header | Footer | 2 Columns
+* ----------------------------------------------------------*/
+
+
+/** --------------------------------------------------------- 
+* Optional - load custom fonts
+* ----------------------------------------------------------*/
+/*@font-face {
+    font-family: 'give-me-a-name';
+    src: url('fonts/give-me-a-name.eot');
+    src: url('fonts/give-me-a-name.eot?#iefix') format('embedded-opentype'),
+         url('fonts/give-me-a-name.woff') format('woff'),
+         url('fonts/give-me-a-name.ttf') format('truetype'),
+         url('fonts/give-me-a-name.svg#give-me-a-name') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}*/
+
+/** --------------------------------------------------------- 
+* General styles and resets
+* ----------------------------------------------------------*/
+* { 
+    margin: 0; 
+    padding: 0; 
+}
+
+html,
+body { 
+	margin: 0; 
+	padding: 0; 
+	height: 100%;
+}
+
+body {
+	font: 12px/16px Arial, Helvetica, sans-serif;
+	color: #333;
+}
+
+:focus {
+	outline: 0px solid transparent;
+}
+
+::-moz-selection {
+    background: #333;
+    text-shadow: none;
+}
+
+::selection {
+    background: #333;
+    text-shadow: none;
+}
+
+
+img {
+    vertical-align: middle;
+}
+
+img a {
+	border: 0;
+}
+
+hr {
+	display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #888;
+    margin: 5px 0;
+    padding: 0;
+}
+
+a,
+a:link,
+a:active,
+a:visited,
+a:hover {
+	text-decoration: none;
+}
+
+ul,
+ul li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+
+/** --------------------------------------------------------- 
+* Typographic presets
+* ----------------------------------------------------------*/
+p {}
+h1 {}
+h2 {}
+h3 {}
+h4 {}
+h5 {}
+h6 {}
+
+
+/** --------------------------------------------------------- 
+* Layout container
+* ----------------------------------------------------------*/
+#main-container {
+	position: relative; 
+	min-height: 100%;
+	margin: 0 auto; 
+}
+
+#content-container {
+	width: 100%;
+	min-height: 100%;
+	background: #fff;
+	float: left;
+	padding: 20px 0;
+}
+
+
+/** ----------------------------------------------------------------- *
+* Content columns
+* ------------------------------------------------------------------- */
+.content {
+	width: 960px;
+	margin: 0 auto;
+	clear: both;
+}
+
+.content-col {
+	float: left;
+	width: 450px;
+	padding: 10px 0;
+}
+
+.content-col.col-overall-width {
+	width: 960px;
+	margin: 0;
+}
+
+.content-col.col-left {
+	margin-right: 20px;
+}
+
+.content-col.col-right {
+}
+
+
+/** ----------------------------------------------------------------- *
+* Header
+* ------------------------------------------------------------------- */
+#header {
+	height: 80px;
+	margin: 0;
+	padding: 0;
+	border-bottom: 1px solid #333;
+}
+
+
+/** ----------------------------------------------------------------- *
+* Navigation
+* ------------------------------------------------------------------- */
+#navigation {
+	width: 100%;
+	height: 50px;
+}
+
+ul.nav,
+ul.nav li {
+	display: inline;
+}
+
+
+/** ----------------------------------------------------------------- *
+* Footer
+* ------------------------------------------------------------------- */
+#footer {
+	width: 100%;
+	height: 50px;
+	margin-top: -50px; 
+	clear: both;
+	border-top: 1px solid #333;
+	position: relative;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#map {
+	width: 750px;
+	height: 420px;
+	background: transparent;
+	border: 1px solid #ccc;
+}
