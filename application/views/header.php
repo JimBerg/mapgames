@@ -1,4 +1,4 @@
-<ul class="nav level-1">
+<ul class="nav">
   
     <?php if( !empty( $nav ) ): ?>
 		<?php 

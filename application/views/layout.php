@@ -32,10 +32,16 @@
 	                    
 	                    <div class="content-col col-overall-width">             
 	                        <div id="login-box">
+	                        	<ul id="navigation-login-view" class="nav">
+									<li <?php if ( $activeView == 'login' ) { echo "class='active'"; } ?>>
+										<a href="<?php echo site_url( 'user/index/login' ); ?>">einloggen</a>
+									</li>
+							 		<li <?php if ( $activeView == 'register' ) { echo "class='active'"; } ?>>
+										<a href="<?php echo site_url( 'user/index/register' ); ?>">registrieren</a>
+							 		</li>
+								</ul>
 	      						<?php echo $login; ?>
 	      					</div>  
-	      					<a href="<?php echo site_url( 'user/index/register' ); ?>">registrieren</a>
-	      					<a href="<?php echo site_url( 'user/index/login' ); ?>">einloggen</a>
 	                    </div>
 					<?php else: ?>
 						<div class="section-head">

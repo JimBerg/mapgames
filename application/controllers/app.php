@@ -14,16 +14,11 @@ class App extends CI_Controller {
 
 	public function index( $state = 'login' ) 
 	{
-		$data[ 'nav' ] = array( 
-			array( 'name' => 'LoginNav!', 'url' => '' ),
-			array( 'name' => 'LoginNav', 'url' => ''),
-			array( 'name' => 'Profil', 'url' => 'user/getProfile' ),
-			array( 'name' => 'logout', 'url' => 'user/logout' )
-		);
-		
 		$this->state = $state;
+		$data[ 'nav' ] = Utilities::setNavigation( 'login' );
+	
 		$this->template->write_view( 'header', 'header', $data );
-		$this->template->write_view( 'login', 'map', $data );
+		$this->template->write_view( 'login', 'map' );
 		$this->template->render();
 	}
 }

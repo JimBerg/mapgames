@@ -6,13 +6,14 @@
 	var cg_game = {};
 	var cg_geolocation = {};
 	var cg_map = {};
+	var cg_user = {};
 	
 	
 	/* ------------------------------------------------------------*
 	* fetch some dom elements || caching
 	* ------------------------------------------------------------*/
-	
-	
+	var mapcontainer = document.getElementById( 'map' );
+		
 	
 	/* ------------------------------------------------------------*
 	* and now let's add some functions
@@ -49,14 +50,41 @@
 		
 	}
 	
+	
+	
+	
 	$( '#getLocation' ).on( 'click', function( e ) {
 		e.preventDefault();
 		alert( 'wir brauchen deine location' );
-		cg_game.init();
+		var test = cg_game.init();
+		console.log(test);
 	});
 	
- 	var map = L.map( 'map' ).setView(  [ '46', '12'] , 12 );
- 	L.tileLayer("http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png", { maxZoom: 22, detectRetina: true } ).addTo(map);
+	
+	if( mapcontainer != null ||  mapcontainer != undefined ) {
+ 		var map = L.map( 'map' ).setView(  [ '46', '12'] , 12 );
+ 		L.tileLayer("http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png", { maxZoom: 22, detectRetina: true } ).addTo(map);	
+	}
   
 	
 })( jQuery );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

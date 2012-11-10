@@ -14,12 +14,9 @@ class User extends CI_Controller {
 	*------------------------------------------------------------*/
 	public function index( $view = 'login' ) 
 	{
-		$data[ 'nav' ] = array( 
-			array( 'name' => 'Entdecke!', 'url' => '' ),
-			array( 'name' => 'Was überhaupt', 'url' => ''),
-			array( 'name' => '...und wie funktioniert\'s', 'url' => '' )
-		);
-		
+		$data[ 'nav' ] = Utilities::setNavigation();
+		$data[ 'activeView' ] = $view;
+
 		$this->template->write_view( 'header', 'header', $data );
 		$this->template->write_view( 'login', $view );
 		$this->template->render();
@@ -31,11 +28,7 @@ class User extends CI_Controller {
 	*------------------------------------------------------------*/
 	public function login()
 	{
-		$data[ 'nav' ] = array( 
-			array( 'name' => 'Entdecke!', 'url' => '' ),
-			array( 'name' => 'Was überhaupt', 'url' => ''),
-			array( 'name' => '...und wie funktioniert\'s', 'url' => '' )
-		);
+		$data[ 'nav' ] = Utilities::setNavigation();
 			
 		if ( isset( $_SESSION[ 'user' ] ) ) {
          	redirect( 'app/index/login' );
@@ -55,7 +48,7 @@ class User extends CI_Controller {
                   );
 			if ( $result !== false ) {
             	$_SESSION[ 'user' ] = $this->input->post( 'email' );
-				$state = "login";
+				$this->state = "login";
             	redirect( 'app/index/login' );
          	}
 		}
@@ -71,7 +64,8 @@ class User extends CI_Controller {
    	public function logout()
    	{
       	session_destroy();
-      	$this->template->write_view( 'header', 'header' );
+		$data[ 'nav' ] = Utilities::setNavigation();
+      	$this->template->write_view( 'header', 'header', $data );
 		$this->template->write_view( 'login', 'login' );
 		$this->template->render();
    	}
@@ -92,13 +86,23 @@ class User extends CI_Controller {
 	{
 		$this->load->model( 'userModel' );
 	
-		$data = array(
+		$dataUser = array(
 			'firstname' => $this->input->post( 'firstname' ),
 			'email' 	=> $this->input->post( 'email' ),
 			'password' 	=> $this->input->post( 'password' ),
 		);
-
-		$this->userModel->createUser( $data );
+		
+		$dataLocation = array(
+			'lat' 	=> 12.122,
+			'lng' 	=> 32.110,
+			'name' 	=> 'Somewhere',
+		);
+//TODO: if no error
+		$this->userModel->createUser( $dataUser, $dataLocation );
+		
+		$_SESSION[ 'user' ] = $this->input->post( 'email' );
+		$this->state = "login";
+		redirect( 'app/index/login' );
 	}
 	
 	
@@ -110,14 +114,9 @@ class User extends CI_Controller {
 		$this->load->model( 'userModel' );
 			
 		if( $_SESSION[ 'user'] ) {
+				
+			$data[ 'nav' ] = Utilities::setNavigation( 'login' );
 			
-			$data[ 'nav' ] = array( 
-				array( 'name' => 'LoginNav!', 'url' => '' ),
-				array( 'name' => 'LoginNav', 'url' => ''),
-				array( 'name' => 'Profil', 'url' => 'user/getProfile' ),
-				array( 'name' => 'logout', 'url' => 'user/logout' )
-			);
-		
 			$this->state = "login";
 			$email = $_SESSION[ 'user'];
 			$data[ 'profile' ] = $this->userModel->getUserProfile( $email );
@@ -127,7 +126,8 @@ class User extends CI_Controller {
 			$this->template->render();
 		} else {
 			$this->state = "logout";
-			$this->template->write_view( 'header', 'header' );
+			$data[ 'nav' ] = Utilities::setNavigation();
+			$this->template->write_view( 'header', 'header', $data );
 			$this->template->write_view( 'login', 'login' );
 			$this->template->render();
 		}
