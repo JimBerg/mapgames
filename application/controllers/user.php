@@ -58,6 +58,7 @@ class User extends CI_Controller {
 		$this->template->render();	
 	}
 	
+	
 	/*------------------------------------------------------------*
 	* logout
 	*------------------------------------------------------------*/
@@ -65,10 +66,12 @@ class User extends CI_Controller {
    	{
       	session_destroy();
 		$data[ 'nav' ] = Utilities::setNavigation();
+		$data[ 'activeView' ] = 'login';
       	$this->template->write_view( 'header', 'header', $data );
-		$this->template->write_view( 'login', 'login' );
+		$this->template->write_view( 'login', 'login', $data );
 		$this->template->render();
    	}
+   
    
 	/*------------------------------------------------------------*
 	* save 
@@ -132,6 +135,7 @@ class User extends CI_Controller {
 			$this->template->render();
 		}
 	}
+	
 	
 	/*------------------------------------------------------------*
 	* return user state login|logout

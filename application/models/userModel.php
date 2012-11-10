@@ -38,19 +38,19 @@ class UserModel extends CI_Model {
 	*------------------------------------------------------------*/ 
 	public function getUserProfile( $email ) 
 	{
-		$query = $this
-            ->db
-            ->select( array( 'firstname', 'lastname', 'userPic', 'location_id', 'email' ) )
-            ->where( 'email', $email )
-			->limit( 1 )
-            ->get( 'user' );
+		$this->db->select( array( 'firstname', 'lastname', 'avatar', 'location_id', 'email', 'location.*' ) );
+		$this->db->from( 'user' );
+		$this->db->join( 'location', 'location.id = user.location_id' );
+
+		$query = $this->db->get();
+
+	
 		if ( $query->num_rows > 0 ) {
         	 return $query->row();
       	}
-      	return false;
+      	return false;		
 	}
-
-		
+	
 	
 	public function getPOIs( $type = null )
 	{

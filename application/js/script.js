@@ -66,7 +66,13 @@
 	* initialize map
 	* ------------------------------------------------------------*/
 	cg_map.init = function() {
-		cg_map.map = L.map( 'map' ).setView( [ cg_user.home.lat, cg_user.home.lng ] , 16 );
+		//var markerLayer = L.layerGroup([ L.marker( [ cg_user.home.lat, cg_user.home.lng ] )]);
+	
+		cg_map.map = L.map('map', {
+		    center: new L.LatLng( cg_user.home.lat, cg_user.home.lng ),
+		    zoom: 14,
+		    layers: []
+		});
  		L.tileLayer("http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png", { minZoom: 12, maxZoom: 18, detectRetina: true } ).addTo( cg_map.map );	
  		cg_map.setMarker();
 	}
@@ -86,31 +92,42 @@
 	});
 	cg_game.init();
 	
+	
+	
+	
+	
+	
+	
+	
+	
 	if( mapcontainer != null && mapcontainer != undefined ) { 
 		cg_map.init();
 	}
 	
 	
-	$( 'a.poi' ).each( function( index, element ) {
+	/*$( 'a.poi' ).each( function( index, element ) {
 		$( this ).on( 'click', function( e ) {
 			var marker = new Array();
 			var url = $( this ).attr( 'href' );
+			
 			$.ajax({
 			  	url: url,
 			  	success: function ( response ) {
 			  		var data =  $.parseJSON( response );
 			  		for( var i = 0; i < data.length; i++ ) {
 			  			marker[i] = L.marker( [ data[i].lat, data[i].lng ] );
-			  			marker[i].addTo( cg_map.map );
+			  			//marker[i].addTo( cg_map.map );
 			  			marker[i].bindPopup( "<p>"+data[i].name+"</p>" );
 			  		}
-			  		
+			  		var markerLayer = L.layerGroup( marker );
+			  		var overlay = { 'POIs': markerLayer };
+					L.control.layers( overlay ).addTo( cg_map.map );
 			  	},
 			});
 			e.preventDefault();
 		});
-		
-	});
+	});*/
+	
 })( jQuery );
 
 

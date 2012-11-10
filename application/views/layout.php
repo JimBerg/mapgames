@@ -8,8 +8,8 @@
 	</head>
 	
     <body>
-    	<?php echo $this->state; ?> 
-    	<?php var_dump($_SESSION); ?> 
+    	<?php //echo $this->state; ?> 
+    	<?php //var_dump($_SESSION); ?> 
         <div id="main-container">
             <div id="header">
             	<div class="content">
@@ -32,6 +32,7 @@
 	                    
 	                    <div class="content-col col-overall-width">             
 	                        <div id="login-box">
+	                        	<?php if( !empty( $activeView ) ): ?>
 	                        	<ul id="navigation-login-view" class="nav">
 									<li <?php if ( $activeView == 'login' ) { echo "class='active'"; } ?>>
 										<a href="<?php echo site_url( 'user/index/login' ); ?>">einloggen</a>
@@ -40,6 +41,7 @@
 										<a href="<?php echo site_url( 'user/index/register' ); ?>">registrieren</a>
 							 		</li>
 								</ul>
+								<?php endif; ?>
 	      						<?php echo $login; ?>
 	      					</div>  
 	                    </div>
