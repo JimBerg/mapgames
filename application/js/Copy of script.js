@@ -106,3 +106,35 @@
 		
 		
 })( jQuery );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	$( '#getLocation' ).on( 'click', function( e ) {
+		e.preventDefault();
+		alert( 'wir brauchen deine location' );
+		var test = cg_game.init();
+		console.log(test);
+	});
+	
+	
+	if( mapcontainer != null ||  mapcontainer != undefined ) {
+		
+ 		cg_map.map = L.map( 'map' ).setView(  [ cg_user.home.lat, cg_user.home.lng ] , 12 );
+ 		L.tileLayer("http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png", { maxZoom: 22, detectRetina: true } ).addTo( cg_map.map );	
+	}
+  

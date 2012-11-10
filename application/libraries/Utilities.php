@@ -1,7 +1,7 @@
 <?php 
 Class Utilities
 {
-	public static function setNavigation( $page = 'logout') 
+	public static function setNavigation( $page = 'logout' ) 
 	{
 		if( $page == 'logout' ) {
 			return $data[ 'nav' ] = array( 
@@ -16,5 +16,10 @@ Class Utilities
 				array( 'name' => 'Logout', 'url' => 'user/logout' )
 			);
 		}
+	}
+	
+	public static function setMarkerContent( $poi ) 
+	{
+
 	}
 }

@@ -93,8 +93,8 @@ class User extends CI_Controller {
 		);
 		
 		$dataLocation = array(
-			'lat' 	=> 12.122,
-			'lng' 	=> 32.110,
+			'lat' 	=> $this->input->post( 'position-lat' ),
+			'lng' 	=> $this->input->post( 'position-lng' ),
 			'name' 	=> 'Somewhere',
 		);
 //TODO: if no error

@@ -34,7 +34,7 @@ class UserModel extends CI_Model {
 	
 		
 	/*------------------------------------------------------------*
-	* verify user on login
+	* get user profile
 	*------------------------------------------------------------*/ 
 	public function getUserProfile( $email ) 
 	{
@@ -47,6 +47,25 @@ class UserModel extends CI_Model {
 		if ( $query->num_rows > 0 ) {
         	 return $query->row();
       	}
+      	return false;
+	}
+
+		
+	
+	public function getPOIs( $type = null )
+	{
+		if( $type )	{
+			$query = $this
+	            ->db
+	            ->where( 'type', $type )
+	            ->where( 'poi', 1 )
+	            ->get( 'location' );
+	
+			if ( $query->num_rows > 0 ) {
+		         return $query->result();
+		    }
+	    }
+		
       	return false;
 	}
 }

@@ -11,7 +11,8 @@
 	
 	<button id="getLocation">Deine Position</button>
 	
-	<input type="hidden" id="position" />
+	<input type="hidden" id="position-lat" name="position-lat" />
+	<input type="hidden" id="position-lng" name="position-lng" />
 	<input type="submit" value="Registrieren" id="submitData" />
 	
 <?php echo form_close(); ?>
