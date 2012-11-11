@@ -39,7 +39,7 @@ body {
 body {
 	font: 12px/16px Arial, Helvetica, sans-serif;
 	color: #333;
-	background: #fafafa;
+	background: #eee;
 }
 
 :focus {
@@ -114,7 +114,6 @@ h6 {}
 #content-container {
 	width: 100%;
 	min-height: 100%;
-	background: #fff;
 	float: left;
 	padding: 20px 0;
 }
@@ -152,10 +151,14 @@ h6 {}
 * Header
 * ------------------------------------------------------------------- */
 #header {
-	height: 80px;
+	height: 50px;
 	margin: 0;
 	padding: 0;
-	border-bottom: 1px solid #333;
+	border-bottom: 1px solid #CCC;
+	box-shadow: 
+		inset 0 -1px 0 #fff, 
+		0 0 25px #ccc,
+		inset 0 2px 8px #ccc;
 }
 
 
@@ -163,8 +166,9 @@ h6 {}
 * Navigation
 * ------------------------------------------------------------------- */
 #navigation {
-	width: 100%;
+	width: 750px;
 	height: 50px;
+	margin: 0 auto;
 }
 
 ul.nav,
@@ -172,37 +176,65 @@ ul.nav li {
 	display: inline;
 }
 
-
 ul.nav li {
-	display: block; 
+	display: block;
 	float: left;
-	height: 24px;
+	height: 40px;
 	min-width: 100px;
-	line-height: 24px;
+	line-height: 40px;
 	padding: 4px 8px;
+	
+	text-align: center;	
+	
 	border: 1px solid transparent;
 	border-right: 1px solid #ccc;
-	text-align: center;
+	box-shadow: 
+		1px 0 0 #fff;
 	
-	/*-webkit-transition: all 120ms ease-in;*/
+	-webkit-transition: all 120ms ease-in;
 }
 
-ul.nav li:last-child {
-	border: 1px solid transparent;
+
+ul.nav li:first-child {
+	border-left: 1px solid #ccc;
+	box-shadow: 
+		1px 0 0 #fff,
+		-1px 0 0 #fff;
 }
+
+/*ul.nav li:last-child {
+	border: 1px solid transparent;
+	box-shadow: none;
+}*/
 
 ul.nav li a{
+	font-family: Oswald;
 	color: #333333;
+	font-weight: 300;
 	font-size: 14px;
 	text-shadow: 1px 1px 0 #fff;
 	display: block;
+	text-transform: uppercase;
+}
+
+ul.nav li:hover,
+ul.nav li.active {
+	box-shadow: 
+		1px 0 0 white, 
+		
+		inset 1px 0px 0px #999, 
+		inset 0px -1px 0px silver,
+		
+		inset 0 0px 25px silver, 
+		inset 0 0px 5px #B0B0B0, 
+		inset 0 1px 0 #777;	
 }
 
 
 ul.nav li a:hover,
 ul.nav li.active a {
-	color: #557099;
-	/*box-shadow: 
+	/*color: #557099;
+	box-shadow: 
 		inset 0px 16px 0px #fff,
 		inset 0px -16px 0px #efefef;
 	border: 1px solid #fff;*/
@@ -343,18 +375,90 @@ input[type='submit']:hover {
 * ------------------------------------------------------------------- */
 #map {
 	width: 750px;
-	height: 420px;
+	height: 560px;
+	margin: 0 auto;
+	
 	background: transparent;
-	border: 1px solid #ccc;
+	border: 1px solid #777;
+	
+	box-shadow: 
+		1px 0px 0px #fff,
+		-1px 0px 0px #fff,
+		0px 1px 0px #fff,
+		0px -1px 0px #fff;
+		
+	/*border-radius: 3px;*/
+}
+
+.leaflet-control-attribution.leaflet-control {
+	display: none;
+}
+
+.leaflet-control-layers label {
+	width: 60px;
+}
+
+.leaflet-control-layers * {
+	font-size: 11px;
+	line-height: 11px;
+	margin: 0;
+	padding: 0;
+	float: left;
+	text-align: center;
+}
+
+.leaflet-control-layers input[ type="radio" ] {
+	opacity: 0;
+}
+
+.leaflet-bottom.leaflet-left {
+	margin: 0;
+	padding: 0;
+	left: -11px;	
+	bottom: -90px;
+	cursor: pointer;
+}
+
+.leaflet-bottom.leaflet-left .open {
+	bottom: 70px;
+	-webkit-transition: all 350ms ease-in;
+}
+
+.leaflet-bottom.leaflet-left .close {
+	-webkit-transition: all 350ms ease-in;
 }
 
 
 
+.marker-control-layer {
+	width: 752px;
+	height: 100px;
+	background: #fff;
+	
+	/*border-radius: 3px;*/
+	border: 1px solid #777;
+	box-shadow: 
+		0 0 1px #fff,
+		inset -1px 1px 0px #fff,
+		inset -1px 5px 15px #ddd,
+		inset 1px 0 0 #999,
+		inset -3px 0 0 #999;
+	
+	opacity: 1;
+}
 
 
-
-
-
+#icon-plus {
+	font-size: 24px;
+	font-weight: bold;
+	line-height: 24px;
+	color: #333;
+	text-shadow: 
+		0 -1px 0 #000,
+		0 1px 0 #fff;
+	float: right;
+	margin-right: 10px;
+}
 
 
 

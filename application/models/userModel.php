@@ -14,6 +14,7 @@ class UserModel extends CI_Model {
 		return;
 	}
 	
+	
 	/*------------------------------------------------------------*
 	* verify user on login
 	*------------------------------------------------------------*/ 
@@ -44,7 +45,6 @@ class UserModel extends CI_Model {
 
 		$query = $this->db->get();
 
-	
 		if ( $query->num_rows > 0 ) {
         	 return $query->row();
       	}
@@ -52,6 +52,13 @@ class UserModel extends CI_Model {
 	}
 	
 	
+	/*------------------------------------------------------------*
+	* get all special markers => pois 
+	* @param (int) $type, what kind of marker should be selected
+	* 1 - Sehenswürdigkeiten
+	* 2 - Parks, Gärten
+	* 3 - Museen und Ausstellungen 
+	*------------------------------------------------------------*/ 
 	public function getPOIs( $type = null )
 	{
 		if( $type )	{

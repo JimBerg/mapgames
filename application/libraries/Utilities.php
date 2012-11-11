@@ -13,7 +13,8 @@ Class Utilities
 			return $data[ 'nav' ] = array( 
 				array( 'name' => 'Map', 'url' => 'app/index' ),
 				array( 'name' => 'Profil', 'url' => 'user/getProfile' ),
-				array( 'name' => 'Logout', 'url' => 'user/logout' )
+				array( 'name' => 'Check Ins', 'url' => 'user/getProfil' ),
+				//array( 'name' => 'Logout', 'url' => 'user/logout' )
 			);
 		}
 	}
