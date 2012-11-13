@@ -78,6 +78,9 @@ class User extends CI_Controller {
 	*------------------------------------------------------------*/
 	public function saveData( )
 	{
+			
+		$this->load->model( 'userModel' );	
+		$this->userModel->setRadius();
 		
 	}
 
@@ -110,7 +113,7 @@ class User extends CI_Controller {
 	
 	
 	/*------------------------------------------------------------*
-	* register new user
+	* get Profile
 	*------------------------------------------------------------*/
 	public function getProfile()
 	{
@@ -134,6 +137,28 @@ class User extends CI_Controller {
 			$this->template->write_view( 'login', 'login' );
 			$this->template->render();
 		}
+	}
+	
+	
+	/*------------------------------------------------------------*
+	* get timeline of visited locations
+	*------------------------------------------------------------*/
+	public function getCheckIns()
+	{
+		$this->load->model( 'userModel' );
+		
+		if( $_SESSION[ 'user'] ) {
+				
+			$data[ 'nav' ] = Utilities::setNavigation( 'login' );
+			
+			$this->state = "login";
+			$email = $_SESSION[ 'user'];
+			$data[ 'profile' ] = $this->userModel->getUserProfile( $email );
+			
+			$this->template->write_view( 'header', 'header', $data );
+			$this->template->write_view( 'login', 'profile', $data );
+			$this->template->render();
+		} 
 	}
 	
 	

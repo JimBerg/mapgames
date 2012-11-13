@@ -71,8 +71,31 @@ class UserModel extends CI_Model {
 			if ( $query->num_rows > 0 ) {
 		         return $query->result();
 		    }
+	    } else {
+	    	$query = $this
+	            ->db
+	            ->where( 'poi', 1 )
+	            ->get( 'location' );
+	
+			if ( $query->num_rows > 0 ) {
+		         return $query->result();
+		    }
 	    }
-		
       	return false;
 	}
+	
+	
+	/*------------------------------------------------------------*
+	*  helper function to set radius to each location
+	*------------------------------------------------------------*/
+	public function setRadius()
+	{
+		$pois =  $this->getPOIs();
+		foreach( $pois as $poi ) {
+			$data = Utilities::calcRadius( array( $poi->lat, $poi->lng ));
+			
+			$this->db->update( 'location', $data, array( 'id' => $poi->id ) );
+		}
+	}
+	
 }
