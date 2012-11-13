@@ -52,6 +52,27 @@ class UserModel extends CI_Model {
 	}
 	
 	
+	
+	/*------------------------------------------------------------*
+	* get user visits
+	*------------------------------------------------------------*/ 
+	public function getUserVisits( $id ) 
+	{
+		$this->db->select( 'visits.*, location.*' );
+		$this->db->from( 'visits' );
+		$this->db->where( array( 'user_id' => $id ) );
+		$this->db->join( 'location', 'location.id = visits.location_id' );
+		 
+		$query = $this->db->get();
+
+		if ( $query->num_rows > 0 ) {
+        	 return $query->row();
+      	}
+      	return false;	
+	}
+	
+	
+	
 	/*------------------------------------------------------------*
 	* get all special markers => pois 
 	* @param (int) $type, what kind of marker should be selected
@@ -98,4 +119,16 @@ class UserModel extends CI_Model {
 		}
 	}
 	
+	
+	/*------------------------------------------------------------*
+	*  set check in
+	*------------------------------------------------------------*/
+	public function setCheckIn( $user_id, $location_id )
+	{
+		$data[ 'location_id' ] = $location_id;
+		$data[ 'user_id' ] = $user_id;
+		$data[ 'date' ] = time(); 
+	
+		$this->db->insert( 'visits', $data );
+	}
 }

@@ -74,7 +74,8 @@ hr {
     border: 0;
     border-top: 1px solid #888;
     margin: 5px 0;
-    padding: 0;
+    padding: 20px;
+    clear: both;
 }
 
 a,
@@ -401,9 +402,7 @@ input[type='submit'] {
  	
  	height: 24px;
  	width: 80px;
- 	
- 	float: right;
- 	
+ 		
  	line-height: 24px;
  	text-align: center;
  	
@@ -430,7 +429,7 @@ input[type='submit'] {
  		0 1px 0 #fff;
  		
  		
- 	margin: 20px 0 0 10px;
+ 	margin: 20px 0 0 326px;
  	
  		
  	/*border-radius: 3px;*/
@@ -684,6 +683,8 @@ input:checked {
 	border: 1px solid #AAA;
 	box-shadow: 0 0 10px #AAA, inset 0 1px 0 #F0F0F0, inset 0 20px 50px #DDD;
 	height: 500px;
+	
+	border-radius: 3px;
 }
 
 #profile-page img {
@@ -707,6 +708,8 @@ input:checked {
 #profile-page ul {
 	font-size: 14px;
 	line-height: 20px;
+	float: left;
+	margin-bottom: 30px;
 }
 
 #profile-page ul li {	

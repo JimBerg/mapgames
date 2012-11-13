@@ -28,4 +28,11 @@ class App extends CI_Controller {
 		$pois = $this->userModel->getPOIs( $type );
 		echo json_encode( $pois );
 	}
+
+	public function setCheckIn( $location_id )
+	{
+		$this->load->model( 'userModel' );
+		$user_id = 1;
+		$this->userModel->setCheckIn( $user_id, $location_id );
+	}
 }

@@ -122,14 +122,18 @@ class User extends CI_Controller {
 		if( $_SESSION[ 'user'] ) {
 				
 			$data[ 'nav' ] = Utilities::setNavigation( 'login' );
-			
+//TODO get User!!			
+			$id = 1;
 			$this->state = "login";
 			$email = $_SESSION[ 'user'];
 			$data[ 'profile' ] = $this->userModel->getUserProfile( $email );
+			$data[ 'visits' ] = $this->userModel->getUserVisits( $id );
 			
 			$this->template->write_view( 'header', 'header', $data );
 			$this->template->write_view( 'login', 'profile', $data );
 			$this->template->render();
+			
+			
 		} else {
 			$this->state = "logout";
 			$data[ 'nav' ] = Utilities::setNavigation();

@@ -111,8 +111,20 @@
 	 			cg_user.current.lat <= data[i].lat_north && 
 	 			cg_user.current.lng >= data[i].lng_west && 
 	 			cg_user.current.lng <= data[i].lng_east ) {
-	 			alert( "special location" );
+	 			
+	 			//var ts = Math.round((new Date()).getTime() / 1000)
+	 			//alert( "special location" + data[i].id + data[i].name + new Date());
 	 			//task!
+	 			// annnnnnd now write it to the database!!
+	 			$.ajax({ 
+			 		url: 'http://lokal.horst/websites/mapgames/index.php/app/setCheckIn/'+data[i].id, 
+			 		async: false
+			 	}); 
+			 	
+			 	//user frage freischalten
+			 	//var task = data[i].task;
+			 	//alert(data[i].task);
+			 	$( '<div id="new-task">'+data[i].task+'</div>' ).appendTo( '.cg-marker-control-layer' );
 	 		}
 		}
 		
