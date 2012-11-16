@@ -36,29 +36,31 @@
 	                        <!--<h1>Entdecke!</h1>-->
 	                    </div>
 	                    
-	                    <div class="content-col col-overall-width">             
-	                        <div id="login-box">
-	                        	<?php if( !empty( $activeView ) ): ?>
-	                        	<!--<ul id="navigation-login-view" class="nav">
-									<li <?php if ( $activeView == 'login' ) { echo "class='active'"; } ?>>
-										<a href="<?php echo site_url( 'user/index/login' ); ?>">einloggen</a>
-									</li>
-							 		<li <?php if ( $activeView == 'register' ) { echo "class='active'"; } ?>>
-										<a href="<?php echo site_url( 'user/index/register' ); ?>">registrieren</a>
-							 		</li>
-								</ul>-->
-								<?php endif; ?>
-	      						<?php echo $login; ?>
-	      					</div>  
+	                    <div class="content-col col-overall-width"> 
+	                    	<div id="login-container">
+	      						 <div id="login-box">
+		                        	<?php if( !empty( $activeView ) ): ?>
+		                        	<!--<ul id="navigation-login-view" class="nav">
+										<li id="loginbox-login" <?php if ( $activeView == 'login' ) { echo "class='active'"; } ?>>
+											<a href="<?php echo site_url( 'user/index/login' ); ?>">einloggen</a>
+										</li>
+								 		<li id="loginbox-register" <?php if ( $activeView == 'register' ) { echo "class='active'"; } ?>>
+											<a href="<?php echo site_url( 'user/index/register' ); ?>">registrieren</a>
+								 		</li>
+									</ul>-->
+									<?php endif; ?>
+		      						<?php echo $login; ?>
+		      					</div>
+	                    	</div> 
 	                    </div>
 					<?php else: ?>
 						<div class="section-head">
 	                    <!--   <h1>Bereit!</h1> -->
 	                    </div>
-	                    <h1 id="checkin">Check in</h1>
 	                     <div class="content-col col-overall-width"> 
 	                     	<?php echo $login; ?>
 	                     </div>
+	                     
 					<?php endif; ?>	
                 </div>
             </div>

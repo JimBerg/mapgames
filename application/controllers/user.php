@@ -2,6 +2,7 @@
 class User extends CI_Controller {
 
 	public $state = "logout";
+	
 	public function __construct() 
 	{
 		session_start();
@@ -16,6 +17,9 @@ class User extends CI_Controller {
 	{
 		$data[ 'nav' ] = Utilities::setNavigation();
 		$data[ 'activeView' ] = $view;
+	
+	$user = self::getUser();
+	var_dump($user);
 
 		$this->template->write_view( 'header', 'header', $data );
 		$this->template->write_view( 'login', $view );
@@ -173,6 +177,21 @@ class User extends CI_Controller {
 	{
 		$state = $this->state;
 		return $state;
+	}
+	
+	
+	/*------------------------------------------------------------*
+	* return user state login|logout
+	*------------------------------------------------------------*/
+	public static function getUser()
+	{
+		$this->load->model( 'userModel' );
+		
+		if( $_SESSION[ 'user'] ) {	
+			$email = $_SESSION[ 'user'];
+			$user = $this->userModel->getUserProfile( $email );
+		}
+		return $user;
 	}
 }
 

@@ -25,13 +25,12 @@
 	* 2. else check if geoloction is supported and set local storage
 	* ------------------------------------------------------------*/
 	cg_game.init = function() {
-		
+
 		if ( window.localStorage.getItem( 'location-home-lat' ) ) {
 			cg_user.home = { 
 				'lat': window.localStorage.getItem( 'location-home-lat' ),
 				'lng': window.localStorage.getItem( 'location-home-lng' )
 			}
-			
 			cg_user.current = { 
 				'lat': window.localStorage.getItem( 'location-current-lat' ),
 				'lng': window.localStorage.getItem( 'location-current-lng' )
@@ -40,7 +39,7 @@
 		 	if ( navigator.geolocation ) {
 		    	navigator.geolocation.getCurrentPosition( cg_geolocation.onsuccess, cg_geolocation.onerror, { enableHighAccuracy: true } );
 		    } else {
-		        $( '#map' ).text( "Your browser is out of fashion, there\'s no geolocation!" );
+		        $( '#map' ).text( "Einleitung nicht gelesen? Alter Browser heisst wirklich: Du spielst nicht mit!" );
 		    }	
 		}
 	}	
@@ -92,6 +91,9 @@
 	});
 
 	cg_game.init();
+	
+	//* on page reload == revisit
+	cg_geolocation.observer();
 	
 	$( '#checkin' ).on( 'click', function() {
 		cg_geolocation.observer();	
@@ -236,7 +238,7 @@
 	 	var that = this;
 	 	var visible = arguments[0].visible || false;
 	 	
-		if( typeof that.onAdd !== 'function' ) {
+		if( typeof that.onAdd !== 'function' ) { // sometimes an error occurs because click event is delegated to window
 			return;
 		} else {
 			if( visible === false ) {
@@ -263,7 +265,7 @@
 	        var markerType  = [];
 	        var visible;
 	        
-	        for( var i = 1; i <= 3; i++ ){
+	       /* for( var i = 1; i <= 3; i++ ){
 		        markerCollectionLayer[i] = cg_map.getMarkerCollection( i ); //get bundled markers
 		        var that = markerCollectionLayer[i];
 		        markerType[i] = $( '<input type="checkbox" id="markerType_'+i+'" value="type_'+i+'" /><span class="fakeBox"></span><span class="markerToggle" >Typ '+i+'</span>' ).appendTo( $ ( container ) );
@@ -285,7 +287,10 @@
 	       			event.stopPropagation();  
 	       		});  
 	       		
-	       	});
+	       	});*/
+	       	
+	       	
+	         $( '<h1 id="checkin">Check in</h1>' ).appendTo( $ ( container ) );
 	       	
 	       	//$( container ).on( 'click', function() { markerControlPanelToggle.apply( domElem ); } );
 	       	
@@ -298,6 +303,11 @@
 		cg_map.map.addControl( cg_markerLayer );
 	}
 
+	/*$( '#loginbox-login' ).on( 'click', function( event ) {
+		event.preventDefault();
+		$( '#login-box' ).css( { '-webkit-transform': 'rotate(180deg)' } );
+	});*/
+	
 	
 	
 })( jQuery );
